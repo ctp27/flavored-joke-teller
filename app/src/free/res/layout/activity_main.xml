@@ -1,0 +1,23 @@
+<FrameLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment"
+        android:name="com.udacity.gradle.builditbigger.free.MainActivityFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_main"
+        />
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        />
+
+</FrameLayout>

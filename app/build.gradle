@@ -12,7 +12,7 @@ buildscript {
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.3"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
         minSdkVersion 16
@@ -24,24 +24,44 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+
+        flavorDimensions "default"
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+    }
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     endpointsServer project(path: ':backend', configuration: 'endpoints')
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
+
+    freeImplementation 'com.google.android.gms:play-services-ads:12.0.1'
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.1'
+    implementation 'com.android.support:design:26.1.0'
 
-    compile project(':joke-display-lib')
+    implementation project(':joke-display-lib')
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

@@ -25,10 +25,18 @@ targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
     compile project(':joke-lib')
-    implementation 'com.google.endpoints:endpoints-framework:2.0.9'
+    implementation ('com.google.endpoints:endpoints-framework:2.0.9'){
+        exclude group: 'com.google.guava', module: 'guava-jdk5'
+    }
     implementation 'javax.inject:javax.inject:1'
 
-    implementation 'javax.servlet:servlet-api:2.5'
-    implementation 'com.google.api-client:google-api-client:1.23.0'
-    implementation 'com.google.http-client:google-http-client-android:1.23.0'
+    implementation ('javax.servlet:servlet-api:2.5'){
+        exclude group: 'com.google.guava', module: 'guava-jdk5'
+    }
+    implementation ('com.google.api-client:google-api-client:1.23.0'){
+        exclude group: 'com.google.guava', module: 'guava-jdk5'
+    }
+    implementation ('com.google.http-client:google-http-client-android:1.23.0'){
+        exclude group: 'com.google.guava', module: 'guava-jdk5'
+    }
 }
